@@ -4,7 +4,7 @@ import pickle
 from scipy.stats import beta
 from MABTest import MAB
 
-class TS(MAB):
+class TS(MABTest.MAB):
 	def __init__(self, itemid, posProb):
 		super().__init__(itemid, posProb)
 		self.S = [0 for _ in range(self.K)]
