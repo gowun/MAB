@@ -2,7 +2,7 @@ import numpy as np
 import scipy as sp
 import pickle
 from scipy.stats import beta
-from MAB import MAB
+from MABTest.MAB import MAB
 
 class UCBtune(MAB):
 	# as reward is binary, sum of square is same as simple sum

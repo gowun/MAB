@@ -1,12 +1,12 @@
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
-from user import User
-from MAB import MAB
-from TS import TS
-from UCB1 import UCB1
-from UCBtune import UCBtune
-from BayesUCB import BayesUCB
+from MABTest.user import User
+from MABTest.MAB import MAB
+from MABTest.TS import TS
+from MABTest.UCB1 import UCB1
+from MABTest.UCBtune import UCBtune
+from MABTest.BayesUCB import BayesUCB
 
 class Simulator:
 	def __init__(self, itemid, posProb, itemProb):

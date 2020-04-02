@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import multiprocessing
 
-from simulator import Simulator
+from MABTest.simulator import Simulator
 
 def main():
 	'''K = 25# number of items, 0-base
