@@ -2,9 +2,9 @@ import numpy as np
 import scipy as sp
 import pickle
 from scipy.stats import beta
-from MABTest import MAB
+from MABTest import MAB as mab
 
-class TS(MABTest.MAB):
+class TS(mab):
 	def __init__(self, itemid, posProb):
 		super().__init__(itemid, posProb)
 		self.S = [0 for _ in range(self.K)]
