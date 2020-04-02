@@ -2,8 +2,7 @@ import numpy as np
 import scipy as sp
 import pickle
 from scipy.stats import beta
-#from MAB import MAB
-import MAB
+from MABTest import MAB
 
 class TS(MAB):
 	def __init__(self, itemid, posProb):
