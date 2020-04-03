@@ -28,3 +28,4 @@ class MAB:
 			sim = pickle.load(f)
 			self.__dict__.clear()
 			self.__dict__.update(sim)
+		

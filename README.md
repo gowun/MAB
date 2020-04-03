@@ -1,31 +1,40 @@
-## 알고리즘 설명
-http://wwiiiii.tistory.com/15
+# Dynamic/Reactive AB Test 
 
-## 환경
-python 3.6.3
-numpy 1.13.3
-scipy 1.0.0
-matplotlib 2.1.1
 
-## 구성
-simulator 클래스에 세팅(포지션 별 관측 확률, 아이템 별 관측 시 클릭될 조건부 확률)을 준 뒤 run을 실행하면 해당 세팅에서 각 모델(UCB1, UCB-tuned, Thompson Sampling, Bayes-UCB, etc.)의 행동을 시뮬레이션 한 뒤 결과를 저장한다.
+## Multi-Armed Bandit(MAB) Algorithm
 
-## MAB 클래스
-* 기본적으로 MAB 모델이 얻을 수 있는 정보는 아이템의 아이디와 포지션 별 유저의 관측 확률뿐이다.
+MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 구현된 알고리즘은 랜덤선택(Random), Thomson Sampling(TS), Upper Confidence Bound(UCB1), UCB1-tuned(UCBtune), Bayesian UCB(BayesUCB)가 있다. (자세한 알고리즘 설명은 http://wwiiiii.tistory.com/15)
 
-* MAB의 select_items 함수를 뽑아야 할 아이템의 개수를 인자로 넘겨주며 호출하면, MAB는 이때까지 얻은 정보를 토대로 아이템 아이디* 의 리스트를 반환해야 한다. 이 때 반환되는 리스트에서 아이템 아이디의 인덱스가 해당 아이템이 노출될 포지션을 뜻한다.
 
-* MAB의 update 함수에 MAB가 select_items의 결과로 반환한 리스트와, 해당 리스트에 대한 유저 피드백 리스트(list of boolean, k번째 인덱스의 값이 True면 유저가 해당 위치의 아이템을 클릭한 것이고 False면 관측 후 무시했거나 관측하지 않은 것)를 인자로 호출하면 MAB는 내부 정보를 업데이트한다.
+## MAB 공통 클래스 변수 의미
 
-## 클래스 변수 의미
-* K : 가능한 아이템의 개수
+* K: 가능한 아이템 개수
 
-* L : 가능한 포지션의 개수
+* L: 가능한 포지션 개수 (노출 아이템 개수)
 
-* posProb : posProb[i]는 i번째 포지션을 유저가 관측할 확률. 가능한 인덱스는 [0, L-1]
+* posProb: posProb[i]는 i번째 포지션을 유저가 관측할 확률, 가능한 인덱스는 [0, L-1]
 
-* itemProb : itemProb[i]는 i번 아이템이 관측됐을 때 유저가 클릭할 확률. 가능한 인덱스는 [0, K-1]
+* itemProb: itmeProb[i]는 i번째 아이템이 관측됐을 때 유저가 클릭할 확률, 가능한 인덱스는 [0, K-1]
 
-* S : 크기 K의 1차원 배열 또는 K * L 2차원 배열. S[k][l]은 k번째 아이템이 l번째 위치에 노출된 후 유저에게 클릭된 횟수이다.
+* S: 크기 K의 1차원 배열 또는 K*L의 2차원 배열, S[k][l]은 k번째 아이템이 l번째 위치에 노출된 후 유저에게 클릭된 횟수
 
-* N : 크기 K의 1차원 배열 또는 K * L 2차원 배열. N[k][l]은 k번째 아이템이 l번째 위치에 노출시킨 횟수이다(유저가 관측했는지 여부는 상관 없음).
+* N: 크기 K의 1차원 배열 또는 K*L의 2차원 배열, N[k][l]은 k번째 아이템이 l번째 위치에 노출시킨 횟수
+
+
+## 클래스 구성
+
+* MAB, TS, UCB1, UCBtune, BayesUCB 는 오리지널 패키지의 클래스 (README_org.md 참고)
+
+* ***_wScore 클래스는 user 별 아이템 선호도를 예측한 스코어를 합성하여 추천할 수 있게 변형한 클래스
+
+* ***.ipynb 는 각종 실험용 노트북
+
+
+
+## Dyanmic and Reactive AB Test 실험
+
+* MAB_Simulation.ipynb: 1명의 유저에게 총 5가지 MAB 알고리즘으로 아이템 1개를 추천했을 시 시간의 흐름에 따른 누적 regret 시뮬레이션
+
+* BayesUCB_comparison1.ipynb: 10명의 유저에게 Bayesian UCB 기반으로 5개 아이템 중 2개 추천 시, 시간의 흐름에 따른 10명의 regret 총합의 변화(누적 regret) 시뮬레이션: comparison of without and with predited item scores 
+
+* BayesUCB_comparison2.ipynb: 10명의 유저에게 Bayesian UCB 기반으로 8개 아이템 중 4개 추천 시, 시간의 흐름에 따른 10명의 regret 총합의 변화(누적 regret)시뮬레이션
