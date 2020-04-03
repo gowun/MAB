@@ -45,7 +45,7 @@ class Mass_MAB():
 
 
     def update_batch(self, batch_items, batch_clicked, batch_models=[]):
-        for i in range(batch_items):
+        for i in range(len(batch_items)):
             if self.nModel == 0:
                 self.mab.update(batch_items[i], batch_clicked[i])
             else:
