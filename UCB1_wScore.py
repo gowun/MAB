@@ -22,6 +22,9 @@ class UCB1_wScore(MAB):
 		while len(result) < required_num and len(self.initList) > 0:
 			result.append(self.initList[-1])
 			self.initList.pop()
+            ### added by Gowun
+			if len(self.initList) == 0 and sum(self.N) == 0:
+				self.initList = [i for i in range(self.K)]
 		for i in range(self.K):
 			if self.N[i] == 0: continue
 			items.append(((self.S[i]/self.N[i] + (2*np.log(self.turn)/self.N[i])**0.5) * item_score[i], i))
