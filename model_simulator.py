@@ -8,13 +8,12 @@ class Model_Simulator:
 
     def make_prediction(self, user):
         acc_tf = np.random.choice([0, 1], self.nItem, p=[1 - self.accuracy, self.accuracy])
-        sign = np.random.choice([-1, 1], self.nItem)
         delta = np.random.standard_normal(self.nItem)
         score = []
-        for i, s in enumerate(sign):
+        for i, d in enumerate(delta):
             if acc_tf[i]:
-                score.append(max([0.0, min([1.0, user.itemProb[i] + s * delta[i]/10])]))
+                score.append(max([0.0, min([1.0, user.itemProb[i] + d/10])]))
             else:
-                score.append(delta)
+                score.append(d)
 
         return score
