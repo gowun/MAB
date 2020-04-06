@@ -68,6 +68,7 @@ class Mass_Simulation:
                     ui_score_matrix_per_model.append(tmp)
                 if len(ui_score_matrix_per_model) == 1:
                     ui_score_matrix_per_model = ui_score_matrix_per_model[0]
+                print(ui_score_matrix_per_model)
             dist, reg = self.one_step(ui_score_matrix_per_model)
             if self.predModels is not None and len(self.predModels) > 1:
                 if i == 0:
@@ -87,3 +88,19 @@ class Mass_Simulation:
             cum_regrets = np.cumsum(regrets)
 
         return rec_item_dist, regrets, cum_regrets
+
+    def mean_simulation(self):
+        list_rec_item_dist = []
+        list_regrets = []
+        list_cum_regrets = []
+
+        for i in range(self.nSim):
+            tmp = self.single_simulation()
+            list_rec_item_dist.append(tmp[0])
+            list_regrets.append(tmp[1])
+            list_cum_regrets.append(tmp[2])
+
+        mean_regrets = np.mean(list_regrets, axis=0)
+        mean_cum_regrets = np.mean(list_cum_regrets, axis=0)
+
+        return mean_regrets, mean_cum_regrets
