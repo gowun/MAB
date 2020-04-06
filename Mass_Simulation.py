@@ -15,7 +15,7 @@ class Mass_Simulation:
             self.predModels = None
 
     def compute_rec_item_distribution(self, items):
-        dist = [0] * len(self.massMab.mab.K)
+        dist = [0] * self.massMab.mab.K
         for it in items:
             for i in it:
                 dist[i] += 1
