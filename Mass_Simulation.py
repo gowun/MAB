@@ -36,7 +36,7 @@ class Mass_Simulation:
         else:
             items = rec
             models = []
-        feedbacks = list(map(lambda x: x[1].react(x[0]), zip(items, self.users)))
+        feedbacks = [u.react(items[i]) for i, u in enumerate(self.users)]
         print(feedbacks)
         self.massMab.update_batch(items, feedbacks, models)
 
