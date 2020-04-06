@@ -4,12 +4,12 @@ from pydoc import locate
 from MABTest.model_simulator import Model_Simulator
 
 class Mass_Simulation:
-    def __init__(self, massMab, userList, lenSimulation, nSimulation=1, modelAccs=None):
+    def __init__(self, massMab, userList, lenSimulation, nSimulation=1, modelAccs=[]):
         self.massMab = massMab
         self.users = userList
         self.lenSim = lenSimulation
         self.nSim = nSimulation
-        if modelAccs is not None:
+        if len(modelAccs) > 0:
             self.predModels = [Model_Simulator(acc, self.massMab.mab.K) for acc in modelAccs]
         else:
             self.predModels = None
