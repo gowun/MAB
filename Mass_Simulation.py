@@ -37,7 +37,6 @@ class Mass_Simulation:
             items = rec
             models = []
         feedbacks = [u.react(items[i]) for i, u in enumerate(self.users)]
-        print(feedbacks)
         self.massMab.update_batch(items, feedbacks, models)
 
         if self.massMab.nModel > 1:
