@@ -68,7 +68,6 @@ class Mass_Simulation:
                     ui_score_matrix_per_model.append(tmp)
                 if len(ui_score_matrix_per_model) == 1:
                     ui_score_matrix_per_model = ui_score_matrix_per_model[0]
-                print(ui_score_matrix_per_model)
             dist, reg = self.one_step(ui_score_matrix_per_model)
             if self.predModels is not None and len(self.predModels) > 1:
                 if i == 0:

@@ -20,6 +20,7 @@ class BayesUCB_wScore(MAB):
 		sample_val = [0.0] * self.K
 		for k in range(self.K):
 			z0 = beta.ppf(1.0 - 1.0 / self.turn, sum(self.S[k]), sum(self.N[k]) - sum(self.S[k]))
+			print([z0, item_score(k)])
 			sample_val[k] = z0 * item_score[k]
 		items = sorted([(sample_val[k], k) for k in range(self.K)], reverse=True)
 		result = [items[i][1] for i in range(required_num)]
