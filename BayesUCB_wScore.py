@@ -32,5 +32,5 @@ class BayesUCB_wScore(MAB):
 			self.N[k][l] += 1
 			if feedback[l]:
 				self.S[k][l] += 1
-                if type(self.M) == list and ith_model > -1:
+				if type(self.M) == list and ith_model > -1:
 					self.M[ith_model] += 1

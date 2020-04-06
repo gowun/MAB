@@ -42,5 +42,5 @@ class UCB1_wScore(MAB):
 			self.N[k] += 1
 			if feedback[l]:
 				self.S[k] += 1
-                if type(self.M) == list and ith_model > -1:
-                    self.M[ith_model] += 1
+				if type(self.M) == list and ith_model > -1:
+					self.M[ith_model] += 1
