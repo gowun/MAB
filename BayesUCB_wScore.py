@@ -9,10 +9,10 @@ class BayesUCB_wScore(MAB):
 		super().__init__(itemid, posProb)
 		self.S = [[1 for _ in range(self.L)] for __ in range(self.K)]
 		self.N = [[2 for _ in range(self.L)] for __ in range(self.K)]
-        if nModel > 1:
-            self.M = [0 for _ in range(nModel)]
-        else:
-            self.M = 0
+		if nModel > 1:
+			self.M = [0 for _ in range(nModel)]
+		else:
+			self.M = 0
 	
 	#return sorted list of item numbers using predicted item preference list(item score), with length require_num
 	def select_items(self, required_num, item_score):
