@@ -81,7 +81,7 @@ class Mass_Simulation:
                 rec_item_dist.append(dist)
                 regrets.append(reg)
         
-        if len(self.predModels) > 1:
+        if self.predModels is not None and len(self.predModels) > 1:
             cum_regrets = np.cumsum(list(map(lambda x: sum(x), regrets)))
         else:
             cum_regrets = np.cumsum(regrets)
