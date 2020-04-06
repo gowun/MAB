@@ -12,7 +12,7 @@ class Model_Simulator:
         delta = np.random.standard_normal(self.nItem)
         score = []
         for i, s in enumerate(sign):
-            if acc_tf:
+            if acc_tf[i]:
                 score.append(max([0.0, min([1.0, user.itemProb[i] + s * delta[i]/10])]))
             else:
                 score.append(delta)
