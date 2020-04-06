@@ -2,7 +2,7 @@ import numpy as np
 import scipy as sp
 import pickle
 from scipy.stats import beta
-from MABTest.MAB import MAB
+from MAB.MAB import MAB
 
 class BayesUCB(MAB):
 	def __init__(self, itemid, posProb):

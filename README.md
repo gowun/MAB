@@ -20,6 +20,8 @@ MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 
 
 * N: 크기 K의 1차원 배열 또는 K*L의 2차원 배열, N[k][l]은 k번째 아이템이 l번째 위치에 노출시킨 횟수
 
+* M: user-item score를 계산해 주는 모델 갯수만의 1차원 배열, M[i]는 i번째 모델이 추천한 아이템이 유저에게 클릭된 횟수 
+
 
 ## 클래스 구성
 
@@ -37,4 +39,4 @@ MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 
 
 * BayesUCB_comparison1.ipynb: 10명의 유저에게 Bayesian UCB 기반으로 5개 아이템 중 2개 추천 시, 시간의 흐름에 따른 10명의 regret 총합의 변화(누적 regret) 시뮬레이션: comparison of without and with predited item scores 
 
-* BayesUCB_comparison2.ipynb: 10명의 유저에게 Bayesian UCB 기반으로 8개 아이템 중 4개 추천 시, 시간의 흐름에 따른 10명의 regret 총합의 변화(누적 regret)시뮬레이션
+* BayesUCB_comparison2.ipynb: 10명의 유저에게 Bayesian UCB 기반으로 8개 아이템 중 4개를 2개의 score model로 추천 시, 시간의 흐름에 따른 10명의 regret 총합의 변화(누적 regret)와 선택되는 모델의 비율에 대한 시뮬레이션

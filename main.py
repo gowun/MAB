@@ -36,7 +36,7 @@ def main():
 	sim = Simulator(itemid, posProb, itemProb)
 	log_fname='log/'+datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S.')
 
-	'''
+'''
 	base, plots = sim.run(step_cnt=stepCount, log_fname=log_fname)
 	for i in range(expCount-1):
 		print(str(i+2)+'th exp')

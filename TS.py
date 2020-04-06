@@ -9,6 +9,7 @@ class TS(MAB):
 		super().__init__(itemid, posProb)
 		self.S = [0 for _ in range(self.K)]
 		self.N = [0 for _ in range(self.K)]
+		
 
 	#return sorted list of item numbers, with length require_num
 	def select_items(self, required_num):
