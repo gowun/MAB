@@ -13,7 +13,7 @@ class Model_Simulator:
         score = []
         for i, s in enumerate(sign):
             if acc_tf:
-                score.append(max([0.0, min([1.0, user.itemProb[i] + s * delta[i]/100])]))
+                score.append(max([0.0, min([1.0, user.itemProb[i] + s * delta[i]/10])]))
             else:
                 score.append(delta)
 
