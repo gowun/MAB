@@ -66,9 +66,20 @@ MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 
 
 ## Dyanmic and Reactive AB Test 실험
 
-* MAB_Simulation.ipynb: 1명의 사용자에게 총 5가지 MAB 알고리즘으로 아이템 1개를 추천했을 시 시간의 흐름에 따른 누적 regret 시뮬레이션
+* regret: expected regret - count of selected among recommended items
 
-* MAB_w/wt_comparison.ipynb: 100명의 사용자, 5개의 아이템 중 2개씩 추천하여 각 케이스 별 시간의 흐름에 따른 누적 regret 시뮬레이션(길이 12의 시뮬레이션, 50번 평균)
+    - expected regret = posProb (inner product) itemprob
+    - regret는 언제든 재정의 가능
+
+* MAB_Simulation.ipynb: 1명의 사용자에게 총 5가지 MAB 알고리즘으로 아이템 1개를 추천했을 시 시간의 흐름에 따른 누적 total regret 시뮬레이션
+
+* MAB_w/wt_comparison.ipynb: 100명의 사용자, 5개의 아이템 중 2개씩 추천하여 각 케이스 별 시간의 흐름에 따른 누적 total regret 시뮬레이션(길이 12의 시뮬레이션, 50번 평균)
+
+    - 가정
+        - 각 item score prediction model은 12개월간 사용자 X 아이템 별 선호도(스코어)를 계산한다
+        - 사용자는 각자 아이템 별 선호도가 다르다(사용자 별 아이템 별 선호도는 랜덤으로 배정)
+        - model simulator를 통해 주어진 모델 정확도에 기반하여 사용자 별 아이템 선호도를 배정한다
+            - 즉, 정확도가 0.8이라면 "사용자 X 아이템" 선호도(예측 스코어)에서 0.8의 확률로 유저 별 아이템 별 선호도와 비슷한 스코어를 내고 0.2의 확률로 랜덤 스코어를 낸다 
 
     1. 오직 각 mab 알고리즘만 적용했을 경우
     2. 각 mab 알고리즘 + 하나의 item score prediction model만 적용했을 경우
