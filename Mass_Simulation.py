@@ -87,7 +87,7 @@ class Mass_Simulation:
             cum_regrets = np.cumsum(np.sum(regrets, axis=0))
         else:
             cum_regrets = np.cumsum(regrets)
-
+        print(hist_M)
         return rec_item_dist, regrets, cum_regrets, hist_M
 
     def mean_simulation(self):
