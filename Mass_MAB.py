@@ -12,7 +12,7 @@ class Mass_MAB():
         batch_items = []
         if self.nModel > 1:
             if sum(self.mab.M) == 0:
-                pp = [1/self.nModel] * self.nModel
+                pp = [1.0/self.nModel] * self.nModel
             else:
                 pp = np.array(self.mab.M) / sum(self.mab.M)
             model_lst = np.random.choice(range(self.nModel), self.massSize, p=pp)
