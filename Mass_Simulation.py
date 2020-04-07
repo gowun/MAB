@@ -71,8 +71,8 @@ class Mass_Simulation:
             dist, reg = self.one_step(ui_score_matrix_per_model)
             if self.predModels is not None and len(self.predModels) > 1:
                 if i == 0:
-                    rec_item_dist = dist
-                    regrets = reg
+                    rec_item_dist = [[d] for d in dist]
+                    regrets = [[r] for r in reg]
                 else:
                     for j, d in enumerate(dist):
                         rec_item_dist[j].append(d)
