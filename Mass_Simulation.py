@@ -85,7 +85,7 @@ class Mass_Simulation:
         
         if self.predModels is not None and len(self.predModels) > 1:
             cum_regrets = np.cumsum(np.sum(regrets, axis=0))
-            self.massMab.mab.M = self.M = [0] * len(self.predModels)
+            self.massMab.mab.M = [0] * len(self.predModels)
         else:
             cum_regrets = np.cumsum(regrets)
         #print(hist_M)
