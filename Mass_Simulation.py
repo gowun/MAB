@@ -96,10 +96,20 @@ class Mass_Simulation:
         for i in range(self.nSim):
             tmp = self.single_simulation()
             list_rec_item_dist.append(tmp[0])
-            list_regrets.append(tmp[1])
+            if self.predModels is not None and len(self.predModels) > 1:
+                if i == 0:
+                    list_regrets = [[l] for l in tmp[1]]
+                else:
+                    for j, l in enumerate(tmp[1]):
+                        list_regrets[j].append(l)
+            else:
+                list_regrets.append(tmp[1])
             list_cum_regrets.append(tmp[2])
-
-        mean_regrets = np.mean(list_regrets, axis=0)
+        
+        if self.predModels is not None and len(self.predModels) > 1:
+            mean_regrets = [np.mean(r, axis=0) for r in list_regrets]
+        else:
+            mean_regrets = np.mean(list_regrets, axis=0)
         mean_cum_regrets = np.mean(list_cum_regrets, axis=0)
 
-        return mean_regrets, mean_cum_regrets
+        return mean_regrets, mean_cum_regrets, list_rec_item_dist
