@@ -33,6 +33,13 @@ MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 
 * nModel: (사용한다면) item score prediction model 개수
 
 
+## Model_Simulator 클래스 변수 의미
+
+* accuracy: 희망하는 모델의 정확도
+
+* nItem: 아이템수 
+
+
 
 ## Mass_Simulation 클래스 변수 의미
 
@@ -59,9 +66,9 @@ MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 
 
 ## Dyanmic and Reactive AB Test 실험
 
-* MAB_Simulation.ipynb: 1명의 유저에게 총 5가지 MAB 알고리즘으로 아이템 1개를 추천했을 시 시간의 흐름에 따른 누적 regret 시뮬레이션
+* MAB_Simulation.ipynb: 1명의 사용자에게 총 5가지 MAB 알고리즘으로 아이템 1개를 추천했을 시 시간의 흐름에 따른 누적 regret 시뮬레이션
 
-* MAB_w/wt_comparison.ipynb: 10000명의 사용자, 5개의 아이템 중 2개씩 추천하여 각 케이스 별 시간의 흐름에 따른 누적 regret 시뮬레이션(길이 12의 시뮬레이션, 50번 평균)
+* MAB_w/wt_comparison.ipynb: 100명의 사용자, 5개의 아이템 중 2개씩 추천하여 각 케이스 별 시간의 흐름에 따른 누적 regret 시뮬레이션(길이 12의 시뮬레이션, 50번 평균)
 
     1. 오직 각 mab 알고리즘만 적용했을 경우
     2. 각 mab 알고리즘 + 하나의 item score prediction model만 적용했을 경우
