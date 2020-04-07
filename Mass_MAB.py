@@ -5,7 +5,10 @@ class Mass_MAB():
     def __init__(self, nUser, itemid, posProb, mabName, nModel):
         self.massSize = nUser
         mab = locate(".".join(["MABTest", mabName, mabName]))
-        self.mab = mab(itemid, posProb)
+        if nModel > 0:
+            self.mab = mab(itemid, posProb, nModel)
+        else:
+            self.mab = mab(itemid, posProb)
         self.nModel = nModel
 
     def recommend_items_batch(self, ui_score_matrix_per_model=[]):
