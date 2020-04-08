@@ -66,9 +66,9 @@ MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 
 
 ## Dyanmic and Reactive AB Test 실험
 
-* regret: expected regret - count of selected among recommended items
+* regret: expected value - count of selected among recommended items
 
-    - expected regret = posProb (inner product) itemprob
+    - expected value = posProb (inner product) itemProb
     - regret는 언제든 재정의 가능
 
 * MAB_Simulation.ipynb: 1명의 사용자에게 총 5가지 MAB 알고리즘으로 아이템 1개를 추천했을 시 시간의 흐름에 따른 누적 total regret 시뮬레이션
@@ -84,5 +84,6 @@ MAB 자체도 실시간 추천 알고리즘이고 오리지널 패키지 내에 
     - 3가지 실험 세팅
         1. 오직 각 mab 알고리즘만 적용했을 경우
         2. 각 mab 알고리즘 + 하나의 item score prediction model만 적용했을 경우
-        3. 각 mab 알고리즘 + 두개의 item score prediction models를 적용하여 모델 경쟁을 하게 한 경우
+        3. 각 mab 알고리즘 + 두개의 item score prediction models를 적용하여 모델 경쟁을 하게 한 경우: 특정 고객은 동일한 모델에 의해 두개의 아이템을 추천받는다
+        4. 각 mab 알고리즘 + 네개의 item score prediction models를 적용하여 두개의 아이템을 추천받는 경우: 특정 고객은 네개의 모델중 두개의 모델에 의해 하나씩 아이템을 추천받는다 <-- NOT YET!!
 
